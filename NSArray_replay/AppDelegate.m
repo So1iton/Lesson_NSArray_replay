@@ -139,7 +139,11 @@
         if([objMaster isKindOfClass:[AGAnimal class]]){
             AGAnimal *anim = (AGAnimal*)objMaster;
             NSLog(@"%@", anim.type);
-            NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@", anim.nameAnimal, anim.weightAnimal, anim.heightAnimal, anim.genderAnimal);
+            NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@",
+                  anim.nameAnimal,
+                  anim.weightAnimal,
+                  anim.heightAnimal,
+                  anim.genderAnimal);
             
         }else if([objMaster isKindOfClass:[AGFighter class]]){
             AGFighter *objNew = (AGFighter*)objMaster;
@@ -161,36 +165,44 @@
     
     NSLog(@"--------------------ZVEZDA--------------------");
     
-    for(AGHuman *objMaster2 in arrayAll){
+   
+    NSInteger countHuman = [arrayHumans count];
+    NSInteger countAnimals = [arrayAnimals count];
+    
+    for(int i = 0; i < (countHuman > countAnimals ? countHuman:countAnimals); i++){
+        if(i < (countHuman - 1)){
+            if([AGHuman class]){
+                AGHuman *hum = [AGHuman new];
+                NSLog(@"Name - %@ \nSurname - %@ \nWeight - %f \nHeight - %f \nPol - %@",
+                      hum.name,
+                      hum.surname,
+                      hum.weight,
+                      hum.height,
+                      hum.pol);
         
-        if(arrayHumans > arrayAnimals){
-            NSLog(@"Name - %@ \nSurname - %@ \nWeight - %f \nHeight - %f \nPol - %@",
-                  objMaster2.name,
-                  objMaster2.surname,
-                  objMaster2.weight,
-                  objMaster2.height,
-                  objMaster2.pol);
-            
-            if([objMaster2 isKindOfClass:[AGFighter class]]){
-                AGFighter *objNew = (AGFighter*)objMaster2;
-                NSLog(@"Number of fight - %d \nNumber of win - %d \nNumber of false - %d",
-                      objNew.valueFighting,
-                      objNew.valueWin,
-                      objNew.valueFalse);
-                
+                if([hum isKindOfClass:[AGFighter class]]){
+                    AGFighter *fightNew = (AGFighter*) hum;
+                    NSLog(@"Number of fight - %d \nNumber of win - %d \nNumber of false - %d",
+                          fightNew.valueFighting,
+                          fightNew.valueWin,
+                          fightNew.valueFalse);
+                }
             }
-        }else{
-            if([objMaster2 isKindOfClass:[AGAnimal class]]){
-                AGAnimal *anim = (AGAnimal*)objMaster2;
-                NSLog(@"%@", anim.type);
+        }
+        
+        if(i < (countAnimals - 1)){
+            if([AGAnimal class]){
+                AGAnimal *animNew = [AGAnimal new];
                 NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@",
-                      anim.nameAnimal,
-                      anim.weightAnimal,
-                      anim.heightAnimal,
-                      anim.genderAnimal);
+                      animNew.nameAnimal,
+                      animNew.weightAnimal,
+                      animNew.heightAnimal,
+                      animNew.genderAnimal);
+            }
         }
     }
-    }
+    
+    
     
     return YES;
 }

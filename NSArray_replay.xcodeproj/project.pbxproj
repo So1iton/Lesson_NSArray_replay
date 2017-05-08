@@ -567,6 +567,7 @@
 				E0AFF4791EBB2F85005CFFAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E0AFF47A1EBB2F85005CFFAA /* Build configuration list for PBXNativeTarget "NSArray_replayTests" */ = {
 			isa = XCConfigurationList;
@@ -575,6 +576,7 @@
 				E0AFF47C1EBB2F85005CFFAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E0AFF47D1EBB2F85005CFFAA /* Build configuration list for PBXNativeTarget "NSArray_replayUITests" */ = {
 			isa = XCConfigurationList;
@@ -583,6 +585,7 @@
 				E0AFF47F1EBB2F85005CFFAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
