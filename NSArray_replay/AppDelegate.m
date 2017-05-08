@@ -230,7 +230,7 @@
         }];
     
     for (int i = 0; i < sortingWithBlocks.count ; i++){
-        id sortObj = arrayAll[i];
+        id sortObj = sortingWithBlocks[i];
         NSLog(@"%@", sortObj);
     
         if([sortObj isKindOfClass:[AGHuman class]]){
@@ -243,17 +243,17 @@
                   humSortNew.weight,
                   humSortNew.height,
                   humSortNew.pol);
-        }
-        if([sortObj isKindOfClass:[AGFighter class]]){
-                AGFighter *fightSortNew = (AGFighter*) sortObj;
             
+            if([sortObj isKindOfClass:[AGFighter class]]){
+                AGFighter *fightSortNew = (AGFighter*) sortObj;
+                
                 //NSLog(@"%@", fightSortNew.type);
                 NSLog(@"Number of fight - %ld \nNumber of win - %ld \nNumber of false - %ld",
                       (long)fightSortNew.valueFighting,
                       (long)fightSortNew.valueWin,
                       (long)fightSortNew.valueFalse);
-        }
-        else if([sortObj isKindOfClass:[AGAnimal class]]){
+            }
+        }else if([sortObj isKindOfClass:[AGAnimal class]]){
                 AGAnimal *animSortNew = (AGAnimal*) sortObj;
             
                 //NSLog(@"%@", animSortNew.type);
@@ -262,12 +262,8 @@
                       animSortNew.weightAnimal,
                       animSortNew.heightAnimal,
                       animSortNew.genderAnimal);
-            
     }
-        
     }
-    
-    
     return YES;
 }
 
