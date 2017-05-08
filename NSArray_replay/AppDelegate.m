@@ -140,7 +140,7 @@
             AGAnimal *anim = (AGAnimal*)objMaster;
             NSLog(@"%@", anim.type);
             NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@",
-                  anim.nameAnimal,
+                  anim.name,
                   anim.weightAnimal,
                   anim.heightAnimal,
                   anim.genderAnimal);
@@ -197,7 +197,7 @@
             if([animNew isKindOfClass:[AGAnimal class]]){
                 NSLog(@"%@", animNew.type);
                 NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@",
-                      animNew.nameAnimal,
+                      animNew.name,
                       animNew.weightAnimal,
                       animNew.heightAnimal,
                       animNew.genderAnimal);
@@ -205,6 +205,15 @@
         }
     }
     
+    NSLog(@"--------------------SUPERMAN--------------------");
+    
+    NSSortDescriptor *sortingFirstElement = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortingSecondElement = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:NO];
+    [arrayAll sortUsingDescriptors:[NSArray arrayWithObjects:sortingSecondElement, sortingFirstElement, nil]];
+    
+    for(AGHuman *allObject in arrayAll){
+        NSLog(@"type - %@ \nname - %@", allObject.type, allObject.name);
+    }
     
     
     return YES;

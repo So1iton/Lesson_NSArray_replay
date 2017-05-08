@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        self.nameAnimal =@"Linda";
+        self.name =@"Linda";
         self.weightAnimal = 14.f;
         self.heightAnimal = 0.23f;
     }

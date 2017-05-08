@@ -11,7 +11,7 @@
 
 @interface AGAnimal : NSObject
 
-@property (strong, nonatomic) NSString *nameAnimal;
+@property (strong, nonatomic) NSString *name;
 @property (assign, nonatomic) CGFloat heightAnimal;
 @property (assign, nonatomic) CGFloat weightAnimal;
 @property (strong, nonatomic) NSString *genderAnimal;
