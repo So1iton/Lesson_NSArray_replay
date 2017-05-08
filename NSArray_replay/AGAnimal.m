@@ -14,7 +14,7 @@
 {
     self = [super init];
     if (self) {
-        self.name =@"Bobrik";
+        self.nameAnimal =@"Deny";
         self.weightAnimal = 23.f;
         self.heightAnimal = 0.76f;
         self.type = @"ANIMAL";

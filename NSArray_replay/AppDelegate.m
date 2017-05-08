@@ -87,10 +87,10 @@
         
         if([obj isKindOfClass:[AGFighter class]]){
             AGFighter *objNew = (AGFighter*)obj;
-            NSLog(@"Number of fight - %d \nNumber of win - %d \nNumber of false - %d",
-                  objNew.valueFighting,
-                  objNew.valueWin,
-                  objNew.valueFalse);
+            NSLog(@"Number of fight - %ld \nNumber of win - %ld \nNumber of false - %ld",
+                  (long)objNew.valueFighting,
+                  (long)objNew.valueWin,
+                  (long)objNew.valueFalse);
         }
         
         
@@ -105,10 +105,10 @@
         [humans moveOfHuman];
         if([humans isKindOfClass:[AGFighter class]]){
             AGFighter *objNew = (AGFighter*)humans;
-            NSLog(@"Number of fight - %d \nNumber of win - %d \nNumber of false - %d",
-                  objNew.valueFighting,
-                  objNew.valueWin,
-                  objNew.valueFalse);
+            NSLog(@"Number of fight - %ld \nNumber of win - %ld \nNumber of false - %ld",
+                  (long)objNew.valueFighting,
+                  (long)objNew.valueWin,
+                  (long)objNew.valueFalse);
         }else{NSLog(@"Name - %@ \nSurname - %@ \nWeight - %f \nHeight - %f \nPol - %@",
                     humans.name,
                     humans.surname,
@@ -140,7 +140,7 @@
             AGAnimal *anim = (AGAnimal*)objMaster;
             NSLog(@"%@", anim.type);
             NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@",
-                  anim.name,
+                  anim.nameAnimal,
                   anim.weightAnimal,
                   anim.heightAnimal,
                   anim.genderAnimal);
@@ -148,10 +148,10 @@
         }else if([objMaster isKindOfClass:[AGFighter class]]){
             AGFighter *objNew = (AGFighter*)objMaster;
             NSLog(@"%@", objNew.type);
-            NSLog(@"Number of fight - %d \nNumber of win - %d \nNumber of false - %d",
-                  objNew.valueFighting,
-                  objNew.valueWin,
-                  objNew.valueFalse);
+            NSLog(@"Number of fight - %ld \nNumber of win - %ld \nNumber of false - %ld",
+                  (long)objNew.valueFighting,
+                  (long)objNew.valueWin,
+                  (long)objNew.valueFalse);
         }else{
             NSLog(@"%@", objMaster.type);
             NSLog(@"Name - %@ \nSurname - %@ \nWeight - %f \nHeight - %f \nPol - %@",
@@ -184,10 +184,10 @@
                 if([hum isKindOfClass:[AGFighter class]]){
                     AGFighter *fightNew = (AGFighter*) hum;
                     NSLog(@"%@", fightNew.type);
-                    NSLog(@"Number of fight - %d \nNumber of win - %d \nNumber of false - %d",
-                          fightNew.valueFighting,
-                          fightNew.valueWin,
-                          fightNew.valueFalse);
+                    NSLog(@"Number of fight - %ld \nNumber of win - %ld \nNumber of false - %ld",
+                          (long)fightNew.valueFighting,
+                          (long)fightNew.valueWin,
+                          (long)fightNew.valueFalse);
                 }
             }
         }
@@ -197,7 +197,7 @@
             if([animNew isKindOfClass:[AGAnimal class]]){
                 NSLog(@"%@", animNew.type);
                 NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@",
-                      animNew.name,
+                      animNew.nameAnimal,
                       animNew.weightAnimal,
                       animNew.heightAnimal,
                       animNew.genderAnimal);
@@ -206,13 +206,65 @@
     }
     
     NSLog(@"--------------------SUPERMAN--------------------");
+
+    //sorting with descriptor, but the propety "name" and "nameAnimal" not sorted
+//    NSSortDescriptor *sortingFirstElement = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+//    NSSortDescriptor *sortingSecondElement = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:NO];
+//    [arrayAll sortUsingDescriptors:[NSArray arrayWithObjects:sortingSecondElement, sortingFirstElement, nil]];
+//    
+//    for(AGHuman *allObject in arrayAll){
+//        NSLog(@"type - %@ \nname - %@", allObject.type, allObject.name);
+//    }
     
-    NSSortDescriptor *sortingFirstElement = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-    NSSortDescriptor *sortingSecondElement = [NSSortDescriptor sortDescriptorWithKey:@"type" ascending:NO];
-    [arrayAll sortUsingDescriptors:[NSArray arrayWithObjects:sortingSecondElement, sortingFirstElement, nil]];
+    //sorting with block
+    NSArray *sortingWithBlocks = [arrayAll sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        if([obj1 isKindOfClass:[AGHuman class]]&&[obj2 isKindOfClass:[AGHuman class]]){
+            return [[obj1 name] compare:[obj2 name]];
+        }else if([obj1 isKindOfClass:[AGAnimal class]]&&[obj2 isKindOfClass:[AGAnimal class]]){
+            return [[obj1 nameAnimal] compare:[obj2 nameAnimal]];
+        }else if([obj1 isKindOfClass:[AGHuman class]]){
+            return NSOrderedAscending;
+        }else{
+            return NSOrderedDescending;
+        }
+        }];
     
-    for(AGHuman *allObject in arrayAll){
-        NSLog(@"type - %@ \nname - %@", allObject.type, allObject.name);
+    for (int i = 0; i < sortingWithBlocks.count ; i++){
+        id sortObj = arrayAll[i];
+        NSLog(@"%@", sortObj);
+    
+        if([sortObj isKindOfClass:[AGHuman class]]){
+                AGHuman *humSortNew = (AGHuman*) sortObj;
+            
+                //NSLog(@"%@", humSortNew.type);
+                NSLog(@"Name - %@ \nSurname - %@ \nWeight - %f \nHeight - %f \nPol - %@",
+                  humSortNew.name,
+                  humSortNew.surname,
+                  humSortNew.weight,
+                  humSortNew.height,
+                  humSortNew.pol);
+        }
+        if([sortObj isKindOfClass:[AGFighter class]]){
+                AGFighter *fightSortNew = (AGFighter*) sortObj;
+            
+                //NSLog(@"%@", fightSortNew.type);
+                NSLog(@"Number of fight - %ld \nNumber of win - %ld \nNumber of false - %ld",
+                      (long)fightSortNew.valueFighting,
+                      (long)fightSortNew.valueWin,
+                      (long)fightSortNew.valueFalse);
+        }
+        else if([sortObj isKindOfClass:[AGAnimal class]]){
+                AGAnimal *animSortNew = (AGAnimal*) sortObj;
+            
+                //NSLog(@"%@", animSortNew.type);
+                NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@",
+                      animSortNew.nameAnimal,
+                      animSortNew.weightAnimal,
+                      animSortNew.heightAnimal,
+                      animSortNew.genderAnimal);
+            
+    }
+        
     }
     
     
