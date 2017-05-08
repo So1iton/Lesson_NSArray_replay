@@ -170,9 +170,10 @@
     NSInteger countAnimals = [arrayAnimals count];
     
     for(int i = 0; i < (countHuman > countAnimals ? countHuman:countAnimals); i++){
-        if(i < (countHuman - 1)){
-            if([AGHuman class]){
-                AGHuman *hum = [AGHuman new];
+        if(i < countHuman){
+            AGHuman *hum = [arrayHumans objectAtIndex:i];
+            if([hum isKindOfClass:[AGHuman class]]){
+                NSLog(@"%@", hum.type);
                 NSLog(@"Name - %@ \nSurname - %@ \nWeight - %f \nHeight - %f \nPol - %@",
                       hum.name,
                       hum.surname,
@@ -182,6 +183,7 @@
         
                 if([hum isKindOfClass:[AGFighter class]]){
                     AGFighter *fightNew = (AGFighter*) hum;
+                    NSLog(@"%@", fightNew.type);
                     NSLog(@"Number of fight - %d \nNumber of win - %d \nNumber of false - %d",
                           fightNew.valueFighting,
                           fightNew.valueWin,
@@ -190,9 +192,10 @@
             }
         }
         
-        if(i < (countAnimals - 1)){
-            if([AGAnimal class]){
-                AGAnimal *animNew = [AGAnimal new];
+        if(i < countAnimals){
+            AGAnimal *animNew = [arrayAnimals objectAtIndex:i];
+            if([animNew isKindOfClass:[AGAnimal class]]){
+                NSLog(@"%@", animNew.type);
                 NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@",
                       animNew.nameAnimal,
                       animNew.weightAnimal,
