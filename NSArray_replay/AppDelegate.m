@@ -246,7 +246,7 @@
         {
             return NSOrderedDescending;
         }
-        }];
+    }];
     
     for (int i = 0; i < sortingWithBlocks.count ; i++)
     {
