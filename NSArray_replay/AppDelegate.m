@@ -93,7 +93,6 @@
                   (long)objNew.valueWin,
                   (long)objNew.valueFalse);
         }
-        
         NSLog(@"_____");
         NSLog(@"-----");
     }
@@ -146,7 +145,6 @@
                   anim.weightAnimal,
                   anim.heightAnimal,
                   anim.genderAnimal);
-            
         }
         else if([objMaster isKindOfClass:[AGFighter class]])
         {
@@ -255,9 +253,9 @@
     
         if([sortObj isKindOfClass:[AGHuman class]])
         {
-                AGHuman *humSortNew = (AGHuman*) sortObj;
-                //NSLog(@"%@", humSortNew.type);
-                NSLog(@"Name - %@ \nSurname - %@ \nWeight - %f \nHeight - %f \nPol - %@",
+            AGHuman *humSortNew = (AGHuman*) sortObj;
+            //NSLog(@"%@", humSortNew.type);
+            NSLog(@"Name - %@ \nSurname - %@ \nWeight - %f \nHeight - %f \nPol - %@",
                   humSortNew.name,
                   humSortNew.surname,
                   humSortNew.weight,
@@ -267,7 +265,6 @@
             if([sortObj isKindOfClass:[AGFighter class]])
             {
                 AGFighter *fightSortNew = (AGFighter*) sortObj;
-                
                 //NSLog(@"%@", fightSortNew.type);
                 NSLog(@"Number of fight - %ld \nNumber of win - %ld \nNumber of false - %ld",
                       (long)fightSortNew.valueFighting,
@@ -278,14 +275,13 @@
         else if([sortObj isKindOfClass:[AGAnimal class]])
         {
                 AGAnimal *animSortNew = (AGAnimal*) sortObj;
-            
                 //NSLog(@"%@", animSortNew.type);
                 NSLog(@"Name - %@ \nWeight - %f \nHeight - %f \nGender - %@",
                       animSortNew.nameAnimal,
                       animSortNew.weightAnimal,
                       animSortNew.heightAnimal,
                       animSortNew.genderAnimal);
-    }
+        }
     }
     return YES;
 }
